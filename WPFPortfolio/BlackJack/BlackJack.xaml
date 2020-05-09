@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="WPFPortfolio.BlackJack.BlackJack"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="700" Height="630">
+    <Grid Width="700" Height="630">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="393*"/>
+            <ColumnDefinition Width="247*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="71"/>
+            <RowDefinition Height="14*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <RadialGradientBrush RadiusX="0.7" RadiusY="0.7">
+                <GradientStop Color="#FF1E4200" Offset="1"/>
+                <GradientStop Color="#FF549B19"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="408" Margin="16,43,0,0" VerticalAlignment="Top" Width="242" Visibility="Hidden" Grid.RowSpan="4" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="lbxPlayerCards" HorizontalAlignment="Left" Height="53" Margin="238,6,0,0" VerticalAlignment="Top" Width="123" Grid.Column="1" Visibility="Collapsed" Grid.Row="1"/>
+        <TextBlock x:Name="labelTotal" HorizontalAlignment="Left" Margin="244,64,0,0" TextWrapping="Wrap" Text="Player Total:" VerticalAlignment="Top" Foreground="#FFFF1010" FontSize="18" Grid.Column="1" Height="24" Width="96" Visibility="Collapsed" Grid.Row="1"/>
+        <ListBox x:Name="lbxDealerCards" HorizontalAlignment="Left" Height="52" Margin="366,6,0,0" VerticalAlignment="Top" Width="174" Grid.Column="1" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="labelDealerTotal" HorizontalAlignment="Left" Margin="366,69,0,0" TextWrapping="Wrap" Text="Dealer Total:" VerticalAlignment="Top" Foreground="#FFFF1010" FontSize="18" Grid.Column="1" Height="24" Width="100" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="labelStatus" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="50" Text="PLACE BET" FontWeight="Bold" Grid.ColumnSpan="2">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF8AFF8A" Offset="0"/>
+                    <GradientStop Color="#FF53EA53" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <StackPanel x:Name="playerCardsPanel" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="dealerCardsPanel" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2"/>
+        <Rectangle Grid.Column="1" Grid.Row="4" Grid.RowSpan="2" RadiusX="50" RadiusY="50" Grid.ColumnSpan="2" Margin="116,10,116,0" Stroke="#FF302500">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9B5E16" Offset="0.779"/>
+                    <GradientStop Color="#FF956D1A" Offset="0.479"/>
+                    <GradientStop Color="#FFC3A876" Offset="0.227"/>
+                    <GradientStop Color="#FF402A10" Offset="1"/>
+                    <GradientStop Color="#FFFFDB99"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel x:Name="buttonPanel" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button x:Name="buttonDeal" Content="Deal" HorizontalAlignment="Center" VerticalAlignment="Center" Click="buttonDeal_Click" FontSize="30" FontWeight="Bold" Width="94" Focusable="False">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0.046"/>
+                        <GradientStop Color="#FFFFDE98" Offset="0.193"/>
+                        <GradientStop Color="#FFFFFA93" Offset="0.678"/>
+                        <GradientStop Color="#FFAC8021" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="buttonHit" Content="Hit" HorizontalAlignment="Center"  VerticalAlignment="Top" Click="buttonHit_Click" IsEnabled="False" FontSize="30" FontWeight="Bold" Width="59" Focusable="False">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0.046"/>
+                        <GradientStop Color="#FFFFDE98" Offset="0.193"/>
+                        <GradientStop Color="#FFFFFA93" Offset="0.678"/>
+                        <GradientStop Color="#FFAC8021" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="buttonStay" Content="Stand" HorizontalAlignment="Center"  VerticalAlignment="Top" Click="buttonStay_Click" IsEnabled="False" FontSize="30" FontWeight="Bold" Width="104" Focusable="False">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0.046"/>
+                        <GradientStop Color="#FFFFDE98" Offset="0.193"/>
+                        <GradientStop Color="#FFFFFA93" Offset="0.678"/>
+                        <GradientStop Color="#FFAC8021" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="buttonNewHand" Content="New Hand" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="buttonNewHand_Click" FontSize="30" FontWeight="Bold" Visibility="Collapsed">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0.046"/>
+                        <GradientStop Color="#FFFFDE98" Offset="0.193"/>
+                        <GradientStop Color="#FFFFF486" Offset="0.748"/>
+                        <GradientStop Color="#FFEAE350" Offset="0.187"/>
+                        <GradientStop Color="#FFAC8021" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <TextBlock x:Name="totalCash" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Chips" VerticalAlignment="Center" Foreground="Black" FontSize="35" Padding="0,0,10,0" FontWeight="Bold" Margin="0,2"/>
+            <xctk:DoubleUpDown x:Name="numUpBet" HorizontalAlignment="Right" ValueChanged="numUpBet_ValueChanged" Minimum="0" Maximum="1000" Increment="10" Padding="0" FontSize="18" Width="66" Height="28" VerticalAlignment="Center"/>
+        </StackPanel>
+        <TextBlock x:Name="pleaseBet" Grid.Column="2" HorizontalAlignment="Left" Margin="6,23,0,0" Grid.Row="4" TextWrapping="Wrap" Text="PLACE BET!" VerticalAlignment="Top" Foreground="Red" FontSize="20" Visibility="Visible" FontWeight="Bold" Height="27" Width="107"/>
+
+
+
+    </Grid>
+</UserControl>
